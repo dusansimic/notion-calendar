@@ -3,6 +3,13 @@ import * as path from "path";
 import { optimizer } from "@electron-toolkit/utils";
 
 const host = "https://calendar.notion.so";
+const otherAllowedHosts = ["https://calendar-api.notion.so"];
+
+const startsWithAny = (haystack: string, needles: string[]) => {
+  return needles
+    .map((needle) => haystack.startsWith(needle))
+    .some((starts) => starts);
+};
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -19,7 +26,7 @@ function createWindow() {
   });
 
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-    if (!url.startsWith(host)) {
+    if (!startsWithAny(url, [host, ...otherAllowedHosts])) {
       shell.openExternal(url);
       return { action: "deny" };
     }
