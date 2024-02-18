@@ -1,0 +1,24 @@
+appId: so.notion.Calendar
+productName: Notion Calendar
+directories:
+  buildResources: build
+files:
+  - "!.devcontainers/*"
+  - "!.github/*"
+  - "!src/*"
+  - "!electron.vite.config.ts"
+  - "!{CHANGELOG.md,README.md}"
+  - "!{tsconfig.json,tsconfig.node.json}"
+asarUnpack:
+  - resources/**
+linux:
+  target:
+    - deb
+    - rpm
+    - flatpak
+  maintainer: dusansimic.me
+  category: Calendar
+flatpak:
+  runtimeVersion: 23.08
+  baseVersion: 23.08
+npmRebuild: false

@@ -1,0 +1,15 @@
+{
+	"name": "Node.js & TypeScript",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.vscode-typescript-next",
+				"yoavbls.pretty-ts-errors",
+				"esbenp.prettier-vscode"
+			]
+		}
+	}
+}

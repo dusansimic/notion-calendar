@@ -1,0 +1,27 @@
+{
+  "name": "notion-calendar",
+  "productName": "Notion Calendar",
+  "description": "Notion Calendar desktop application",
+  "homepage": "https://github.com/dusansimic/notion-calendar",
+  "version": "0.1.0",
+  "author": {
+    "name": "Dušan Simić",
+    "email": "dusan.simic1810@gmail.com",
+    "url": "https://dusansimic.me"
+  },
+  "main": "./out/main/index.js",
+  "scripts": {
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev -- --no-sandbox",
+    "prebuild": "electron-vite build",
+    "build:linux": "npm run prebuild && electron-builder --linux --config"
+  },
+  "devDependencies": {
+    "@electron-toolkit/tsconfig": "^1.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@swc/core": "^1.4.1",
+    "electron": "^28.2.3",
+    "electron-builder": "^24.9.1",
+    "electron-vite": "^2.0.0"
+  }
+}
