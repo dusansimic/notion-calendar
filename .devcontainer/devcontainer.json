@@ -8,7 +8,8 @@
 			"extensions": [
 				"ms-vscode.vscode-typescript-next",
 				"yoavbls.pretty-ts-errors",
-				"esbenp.prettier-vscode"
+				"esbenp.prettier-vscode",
+				"GitHub.vscode-github-actions"
 			]
 		}
 	}

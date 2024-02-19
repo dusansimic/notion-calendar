@@ -1,0 +1,17 @@
+name: Call Flatpak builder
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call:
+    name: Call
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dusansimic/trigger-workflow-action@v0
+        with:
+          name: flatpak.yml
+          owner: dusansimic
+          repo: so.notion.Calendar
