@@ -1,6 +1,7 @@
 import { BrowserWindow, app, shell, session } from "electron";
 import * as path from "path";
 import { optimizer } from "@electron-toolkit/utils";
+import config from "./config";
 
 const host = "https://calendar.notion.so";
 const otherAllowedHosts = ["https://calendar-api.notion.so"];
@@ -13,8 +14,8 @@ const startsWithAny = (haystack: string, needles: string[]) => {
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: config.get("lastWindowState.width"),
+    height: config.get("lastWindowState.height"),
     show: false,
     autoHideMenuBar: true,
     icon: path.join(__dirname, "..", "..", "build", "icon.png"),
@@ -34,6 +35,8 @@ function createWindow() {
   });
 
   mainWindow.loadURL(host, { userAgent: "Chrome" });
+
+  return mainWindow;
 }
 
 app.whenReady().then(() => {
@@ -46,6 +49,12 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window);
   });
 
-  createWindow();
+  const mainWindow = createWindow();
   session.defaultSession.setUserAgent("Chrome");
+
+  app.on("before-quit", () => {
+    const { width, height } = mainWindow.getNormalBounds();
+    config.set("lastWindowState.width", width);
+    config.set("lastWindowState.height", height);
+  });
 });

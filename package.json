@@ -23,5 +23,8 @@
     "electron": "^28.2.3",
     "electron-builder": "^24.9.1",
     "electron-vite": "^2.0.0"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0"
   }
 }
